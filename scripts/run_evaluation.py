@@ -12,11 +12,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def run_evaluation():
 
     experiments = [
-        ("Exp1 (ImageNet + BCE)", "experiments/Exp1_DeepLab_MobileNet_ImageNet/best_model.pth"),
-        ("Exp2 (COCO + BCE)", "experiments/Exp2_DeepLab_MobileNet_COCO/best_model.pth"),
-        ("Exp3 (COCO + ComboLoss)", "experiments/Exp3_DeepLab_MobileNet_COCO_CombinedLoss/best_model.pth"),
-        ("Exp4 (ImageNet + ComboLoss)", "experiments/Exp4_DeepLab_MobileNet_ImageNet_CombinedLoss/best_model.pth"),
-        ("Exp5 (Augmented)", "experiments/Exp5_DeepLab_MobileNet_ImageNet_CombinedLoss_Augmented/best_model.pth")
+        ("Exp1 (ImageNet + BCE)", "experiments/mobilenetv3/Exp1_DeepLab_MobileNet_ImageNet/best_model.pth")
     ]
 
     for name, path in experiments:

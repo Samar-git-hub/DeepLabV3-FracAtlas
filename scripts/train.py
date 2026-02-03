@@ -15,10 +15,18 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.data_pipeline.dataset import FracAtlasPipeline
 from src.models.deeplabv3_mobilenetv3 import get_deeplab_model
 
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+torch.cuda.manual_seed_all(SEED)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
 config = {
     "device": 'cuda' if torch.cuda.is_available() else 'cpu',
     "root_dir": 'data/FracAtlas',
-    "save_dir": 'experiments/Exp6_DeepLab_MobileNetV3_ImageNet_1024',
+    "save_dir": 'experiments/mobilenetv3/Exp1_DeepLab_MobileNet_ImageNet',
     "epochs": 50,
     "resolution": 1024,
     "batch_size": 16,
