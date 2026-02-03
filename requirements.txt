@@ -1,0 +1,24 @@
+# PyTorch CUDA 12.8 wheels
+--index-url https://download.pytorch.org/whl/cu128
+--extra-index-url https://pypi.org/simple
+
+# Core Deep Learning
+torch==2.9.1
+torchvision==0.24.1
+
+# Image Processing & Augmentation
+opencv-python==4.12.0.88
+albumentations==2.0.8
+
+# Data Handling
+numpy==2.2.6
+pandas==2.3.3
+
+# Progress & Utilities
+tqdm==4.65.2
+
+# Evaluation Metrics
+scipy==1.16.3
+scikit-learn==1.8.0
+MedPy==0.5.2
+thop==0.1.1.post2209072238
