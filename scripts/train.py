@@ -140,8 +140,8 @@ def main():
     
     os.makedirs(config['save_dir'], exist_ok=True)
 
-    print(f"Initializing data using 'augmented' data")
-    train_dataset = FracAtlasPipeline(split='train', mode='augmented', resolution=config['resolution'])
+    print(f"Initializing data using 'original_resized' mode at {config['resolution']}x{config['resolution']}")
+    train_dataset = FracAtlasPipeline(split='train', mode='original_resized', resolution=config['resolution'])
     valid_dataset = FracAtlasPipeline(split='valid', mode='original_resized', resolution=config['resolution'])
 
     train_loader = DataLoader(train_dataset, batch_size=config['batch_size'],
