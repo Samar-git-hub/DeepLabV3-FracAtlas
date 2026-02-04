@@ -123,7 +123,7 @@ def evaluate_model(model, model_name="TestModel"):
             global_probs.append(probs_orig_res.flatten())
             global_targets.append(mask_orig.flatten())
 
-            pred_orig_res = (probs_orig_res > 0.5).astype(np.uint8)
+            pred_orig_res = (probs_orig_res > 0.1).astype(np.uint8)
 
             # IoU
             intersection = np.sum(pred_orig_res * mask_orig)
