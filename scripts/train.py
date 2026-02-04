@@ -151,6 +151,12 @@ def main():
                               shuffle=False, num_workers=config['num_workers'], pin_memory=True)
 
     model = get_deeplab_model(config['device'], model_weights = "ImageNet")
+
+    if torch.cuda.is_available():
+        if torch.cuda.device_count() > 1:
+            print(f"Using {torch.cuda.device_count()} GPUs")
+            model = nn.DataParallel(model)
+
     optimizer = optim.Adam(model.parameters(), lr=config['learning_rate'])
     
     criterion_bce = nn.BCEWithLogitsLoss()
@@ -181,7 +187,12 @@ def main():
         if val_iou > best_iou:
             best_iou = val_iou
             save_path = os.path.join(config['save_dir'], "best_model.pth")
-            torch.save(model.state_dict(), save_path)
+
+            if isinstance(model, nn.DataParallel):
+                torch.save(model.module.state_dict(), save_path)
+            else:
+                torch.save(model.state_dict(), save_path)
+                
             print(f"New best average validation IoU: {best_iou:.4f}")
         
         epoch_time = time.time() - epoch_start
