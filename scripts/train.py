@@ -83,7 +83,7 @@ def train_one_epoch(model, loader, optimizer, criterion_bce, criterion_dice, dev
         loss_aux = loss_bce_aux
 
         # Auxiliary loss toggle (not using it currently)
-        loss = loss_main + (0.0 * loss_aux)
+        loss = loss_main + (0.5 * loss_aux)
 
         loss.backward()
         optimizer.step()
@@ -157,7 +157,7 @@ def main():
             print(f"Using {torch.cuda.device_count()} GPUs")
             model = nn.DataParallel(model)
 
-    optimizer = optim.Adam(model.parameters(), lr=config['learning_rate'])
+    optimizer = optim.Adam(model.parameters(), lr=config['learning_rate'], weight_decay=1e-4)
     
     criterion_bce = nn.BCEWithLogitsLoss()
     criterion_dice = DiceLoss()
