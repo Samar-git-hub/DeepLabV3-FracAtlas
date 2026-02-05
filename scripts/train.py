@@ -82,8 +82,8 @@ def train_one_epoch(model, loader, optimizer, criterion_bce, criterion_dice, dev
         # loss_aux = 0.5 * loss_bce_aux + 0.5 * loss_dice_aux
         loss_aux = loss_bce_aux
 
-        # Auxiliary loss toggle
-        loss = loss_main + (0.5 * loss_aux)
+        # Auxiliary loss toggle (not using it currently)
+        loss = loss_main + (0.0 * loss_aux)
 
         loss.backward()
         optimizer.step()
