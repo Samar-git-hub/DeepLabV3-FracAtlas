@@ -144,7 +144,6 @@ def create_dataset(split_name, mode='original_resized'):
             save_mask_path = os.path.join(mask_out_dir, new_maskname)
 
             # Save
-            print(f"Saving {mode} images and masks")
             cv2.imwrite(save_img_path, cv2.cvtColor(trans_img, cv2.COLOR_RGB2BGR))
             cv2.imwrite(save_mask_path, trans_mask * 255)
 
