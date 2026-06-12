@@ -37,7 +37,7 @@ This repository implements the **MobileNetV3-Large backbone** variant, focusing 
 
 ## Dataset
 
-**FracAtlas** — a musculoskeletal X-ray dataset containing 4,083 images (717 fractured, 3,366 non-fractured) covering fractures across arms, legs, shoulders, and hip regions. COCO-format polygon annotations are used to generate binary segmentation masks.
+**FracAtlas** - a musculoskeletal X-ray dataset containing 4,083 images (717 fractured, 3,366 non-fractured) covering fractures across arms, legs, shoulders, and hip regions. COCO-format polygon annotations are used to generate binary segmentation masks.
 
 Only the **fractured images** (with segmentation annotations) are used:
 
@@ -86,8 +86,8 @@ Evaluated on the **61-image test set** at original resolution (predictions are i
 
 ### Notes on Results
 
-- **High pixel accuracy (0.9968)** is expected because fractures occupy a very small fraction of the image — even predicting all-background achieves high accuracy. This metric is not informative for this task.
-- **AUC of 0.9521** indicates strong discriminative ability at the pixel level — the model assigns higher probabilities to fracture pixels than background pixels.
+- **High pixel accuracy (0.9968)** is expected because fractures occupy a very small fraction of the image - even predicting all-background achieves high accuracy. This metric is not informative for this task.
+- **AUC of 0.9521** indicates strong discriminative ability at the pixel level - the model assigns higher probabilities to fracture pixels than background pixels.
 - **IoU of 0.2871** reflects the difficulty of precisely localizing thin, irregular fracture lines with a lightweight backbone on a small dataset (574 training images, no augmentation).
 - **MobileNetV3-Large** is a lightweight backbone optimized for efficiency, not maximum segmentation accuracy. Heavier backbones (ResNet50, ResNet101) would be expected to perform significantly better.
 - The data pipeline supports **50× augmentation** (`mode='augmented'`), which was not used in this experiment.
@@ -146,9 +146,9 @@ python src/data_pipeline/augment.py
 ```
 
 This creates:
-- `data/FracAtlas/processed/original_1024/` — resized train/valid/test splits
-- `data/FracAtlas/masks/Fractured/` — original-resolution masks (for evaluation)
-- `data/FracAtlas/Augmented_1024/` — 50× augmented training data (optional)
+- `data/FracAtlas/processed/original_1024/` - resized train/valid/test splits
+- `data/FracAtlas/masks/Fractured/` - original-resolution masks (for evaluation)
+- `data/FracAtlas/Augmented_1024/` - 50× augmented training data (optional)
 
 ### Train
 
@@ -204,7 +204,7 @@ The evaluation computes metrics at **original image resolution** to ensure clini
 |---|---|
 | **IoU** | Intersection over Union between predicted and ground truth fracture regions |
 | **Dice** | Harmonic mean of precision and recall at the pixel level |
-| **HD95** | 95th percentile Hausdorff Distance — measures boundary accuracy (in pixels) |
+| **HD95** | 95th percentile Hausdorff Distance - measures boundary accuracy (in pixels) |
 | **Accuracy** | Pixel-wise classification accuracy |
 | **AUC** | Area under the ROC curve (micro-averaged across all pixels) |
 
@@ -230,3 +230,7 @@ If you use this code, please cite the original paper:
 ## License
 
 MIT License
+
+---
+
+<sub>Documentation written with the assistance of AI.</sub>
